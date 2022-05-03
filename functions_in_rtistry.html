@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Making Functions for Rtistry</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Meghan Harris, MPH" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="theme.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Making Functions for Rtistry
+### Meghan Harris, MPH
+### R Ladies Johannesburg
+### Tuesday, May 24th, 2022
+
+---
+
+
+
+
+class: dark, animated, fadeIn
+
+
+&lt;h1&gt;&lt;span&gt;Reach Out&lt;/span&gt;&lt;/h1&gt;
+
+&lt;div class = "contactbox"&gt;
+&lt;img class = "bio", src="images/meghanharris.jpg", style="width:300px;height:200px;"&gt;
+
+&lt;div class = "contact"&gt;
+&lt;br&gt;
+&lt;a href="https://twitter.com/meghansharris"&gt;&lt;img class = "icon", src ="images/twitter.png"&gt;@meghansharris&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="https://thetidytrekker.com"&gt;&lt;img class = "icon", src = "images/web.png"&gt;TheTidyTrekker.com&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="https://github.com/Meghansaha"&gt;&lt;img class = "icon", src = "images/github.png"&gt;@meghansaha&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="https://www.linkedin.com/in/meghan-harris/"&gt;&lt;img class = "icon", src = "images/linkedin.png"&gt;meghan-harris&lt;/a&gt;
+&lt;br&gt;
+&lt;a href="mailto:meghansa@buffalo.edu"&gt;&lt;img class = "icon", src= "images/email.png"&gt;meghansa@buffalo.edu&lt;/a&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+---
+class: light, animated, fadeIn
+
+
+&lt;h1&gt;&lt;span&gt;What Are We Doing Today?&lt;/span&gt;&lt;/h1&gt;
+
+
+- What Are Functions in R?
+
+
+- Why Use Functions in Rtistry?
+
+
+- Using Base R
+
+
+- Using Purrr
+
+
+- Different Types of Functions for Rtistry
+
+
+- Creating Custom Functions in R
+
+
+- Live Coding Example
+
+
+---
+class: dark, animated, middle, fadeIn
+
+# &lt;center&gt;What Are Functions in R?&lt;/center&gt;
+
+*&lt;center&gt;"Work Smart, Not Hard"&lt;/center&gt;*
+
+---
+class: light, animated, fadeIn
+
+&lt;h1&gt;&lt;span&gt;What Are Functions in R?&lt;/span&gt;&lt;/h1&gt;
+
+Functions are EVERYWHERE in R and you've most likely have used some already even if you haven't made any yourself:
+&lt;br&gt;
+--
+
+- Functions in R can be considered *objects* that we can use to **do something.**
+
+--
+
+- According to the book [Advanced R](https://adv-r.hadley.nz/functions.html#function-fundamentals) by [Hadley Wickham](https://twitter.com/hadleywickham), Most functions are made up of three parts:
+  - `formals()` - arguments that control how the function's called
+  - `body()` - the code inside of the function
+  - `environment()` - the structure that determines how the function finds the values associated the names in the function
+
+--
+
+- In this presentation, we'll focus mainly on **`formals`** and the **`body`** components of custom functions that can be used in rtistry.
+
+---
+class: light, animated, fadeIn
+
+&lt;h1&gt;&lt;span&gt;What Are Functions in R?&lt;/span&gt;&lt;/h1&gt;
+
+Let's look at an example of a basic function:
+
+
+```r
+# Creating a function named "rtistry_message":
+rtistry_message &lt;- function(adjective){
+  
+  # Setting up our custom message:
+  todays_message = paste("Today is a", adjective, "Day for Rtistry!")
+  
+  # Returning our custom message to the console:
+  return(todays_message)
+}
+```
+
+--
+
+```r
+# Using our function:
+rtistry_message("Great")
+```
+
+```
+## [1] "Today is a Great Day for Rtistry!"
+```
+
+--
+
+The **`adjective`** argument is a `formal()` that will control how the function is called. **Everything** inside of the curly brackets `{ }` is the `body()` of the function. In rtistry, we can create simple or complex functions to assist in the creation of our pieces. 
+
+---
+
+class: dark, animated, middle, fadeIn
+
+# &lt;center&gt;Why Use Functions in Rtistry?&lt;/center&gt;
+
+*&lt;center&gt;"No Really. Stop Making Things Hard"&lt;/center&gt;*
+
+---
+class: light, animated, fadeIn
+
+&lt;h1&gt;&lt;span&gt;Why Use Functions in Rtistry?&lt;/span&gt;&lt;/h1&gt;
+
+&lt;img src = "images/art set.jpg"&gt;
+
+--
+
+- Streamline code
+--
+
+- Reduce any manual work that needs to be done
+--
+
+- Make it easier to create variations in your work
+--
+
+- Build up a tool box of functionalities, especially for things you'd like to do often.
+
+
+---
+class: light, animated, fadeIn
+
+&lt;h1&gt;&lt;span&gt;Using Base R&lt;/span&gt;&lt;/h1&gt;
+
+We've already seen a quick example of how we can create functions in R with the `function()` directive. Just like with many processes in R, you can make functions completely using Base R without any extra packages, if you're an R purist.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+/* CSS Themeing for slides */
+
+/* Font Import */ 
+
+@import url('https://fonts.googleapis.com/css2?family=Thasadith&display=swap');
+
+/* Title Slide CSS */
+/* Background Image */
+.title-slide {
+  background-image: url(images/rainbowpipes.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Fonts */
+.title-slide h1, .title-slide h3 {
+  color: #ffffff; 
+  line-height: 3em;
+  background-color:rgba(26, 26, 26,.8);
+  padding : 0;
+  margin : 0;
+  font-family: 'Thasadith', sans-serif;
+}
+
+/* Slide number */
+.title-slide .remark-slide-number {
+    bottom: 7px;
+    opacity: 1;
+    position: absolute;
+    left: 3%;
+    color: #ffffff;
+    font-family: 'Thasadith', sans-serif;
+}
+
+
+/* CSS themeing for Dark Slides */
+/* Background Image and text */
+.dark {
+  color: #ffffff;
+  font-family: 'Thasadith', sans-serif;
+  background-image: url(images/darkbg.png);
+}
+
+/* Slide Header */
+.dark h1 span {
+  color: #000000;
+  font-family: 'Thasadith', sans-serif;
+  background-color: #ffffff;
+  width: auto;
+  padding: 3px;
+  border-style: dotted;
+}
+
+/* Slide Numbers */
+.dark .remark-slide-number {
+    bottom: 7px;
+    opacity: 1;
+    position: absolute;
+    left: 47.5%;
+    color: #ffffff;
+    font-family: 'Thasadith', sans-serif;
+}
+
+/* CSS Themeing for Light Slides */
+
+/* Background image and text */
+.light {
+  color: #000000;
+  font-family: 'Thasadith', sans-serif;
+  background-image: url(images/lightbg.png);
+  background-size: cover;
+}
+
+/* Slide Header */
+.light h1 span {
+  color: #ffffff;
+  font-family: 'Thasadith', sans-serif;
+  background-color: #000000;
+  width: auto;
+  padding: 3px;
+  border-style: dotted;
+}
+
+/* Slide Number */
+.light .remark-slide-number {
+    bottom: 7px;
+    opacity: 1;
+    position: absolute;
+    left: 47.5%;
+    color: #000000;
+    font-family: 'Thasadith', sans-serif;
+}
+
+/* Bio Picture */
+img.bio {
+  box-shadow:
+    -50px -50px 0 -40px #712B75,
+     50px 50px 0 -40px #D49B54;
+  position: absolute;
+  top: 35%;
+  float:left; 
+  width:55%;
+}
+
+/* Contact info */
+.contact {
+  display: inline-block;
+  float:right; 
+  vertical-align: 50%;
+  width:45%;
+  display: flex;
+  flex-direction: column;            
+  justify-content: space-evenly;
+}
+
+img.icon{
+    vertical-align: middle;
+}
+.light a:link {
+  color: black;
+  vertical-align: middle;
+}
+
+.dark a:link {
+  color: white;
+  vertical-align: middle;
+}
+
+
+code.r{
+  font-size: 14px;
+}
+pre {
+  font-size: 14px
+}

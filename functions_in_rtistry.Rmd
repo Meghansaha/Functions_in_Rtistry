@@ -1,0 +1,169 @@
+---
+title: "Making Functions for Rtistry"
+subtitle: ""
+author: "Meghan Harris, MPH"
+institute: "R Ladies Johannesburg"
+date: "Tuesday, May 24th, 2022"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+    css:
+      - "theme.css"
+      - "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: dark, animated, fadeIn
+
+
+<h1><span>Reach Out</span></h1>
+
+<div class = "contactbox">
+<img class = "bio", src="images/meghanharris.jpg", style="width:300px;height:200px;">
+
+<div class = "contact">
+<br>
+<a href="https://twitter.com/meghansharris"><img class = "icon", src ="images/twitter.png">@meghansharris</a>
+<br>
+<a href="https://thetidytrekker.com"><img class = "icon", src = "images/web.png">TheTidyTrekker.com</a>
+<br>
+<a href="https://github.com/Meghansaha"><img class = "icon", src = "images/github.png">@meghansaha</a>
+<br>
+<a href="https://www.linkedin.com/in/meghan-harris/"><img class = "icon", src = "images/linkedin.png">meghan-harris</a>
+<br>
+<a href="mailto:meghansa@buffalo.edu"><img class = "icon", src= "images/email.png">meghansa@buffalo.edu</a>
+
+</div>
+</div>
+
+---
+class: light, animated, fadeIn
+
+
+<h1><span>What Are We Doing Today?</span></h1>
+
+
+- What Are Functions in R?
+
+
+- Why Use Functions in Rtistry?
+
+
+- Using Base R
+
+
+- Using Purrr
+
+
+- Different Types of Functions for Rtistry
+
+
+- Creating Custom Functions in R
+
+
+- Live Coding Example
+
+
+---
+class: dark, animated, middle, fadeIn
+
+# <center>What Are Functions in R?</center>
+
+*<center>"Work Smart, Not Hard"</center>*
+
+---
+class: light, animated, fadeIn
+
+<h1><span>What Are Functions in R?</span></h1>
+
+Functions are EVERYWHERE in R and you've most likely have used some already even if you haven't made any yourself:
+<br>
+--
+
+- Functions in R can be considered *objects* that we can use to **do something.**
+
+--
+
+- According to the book [Advanced R](https://adv-r.hadley.nz/functions.html#function-fundamentals) by [Hadley Wickham](https://twitter.com/hadleywickham), Most functions are made up of three parts:
+  - `formals()` - arguments that control how the function's called
+  - `body()` - the code inside of the function
+  - `environment()` - the structure that determines how the function finds the values associated the names in the function
+
+--
+
+- In this presentation, we'll focus mainly on **`formals`** and the **`body`** components of custom functions that can be used in rtistry.
+
+---
+class: light, animated, fadeIn
+
+<h1><span>What Are Functions in R?</span></h1>
+
+Let's look at an example of a basic function:
+
+```{r basic_ex, echo=TRUE, eval = TRUE}
+
+# Creating a function named "rtistry_message":
+rtistry_message <- function(adjective){
+  
+  # Setting up our custom message:
+  todays_message = paste("Today is a", adjective, "Day for Rtistry!")
+  
+  # Returning our custom message to the console:
+  return(todays_message)
+}
+```
+
+--
+```{r ex_output, echo= TRUE, eval=TRUE}
+# Using our function:
+rtistry_message("Great")
+
+```
+
+--
+
+The **`adjective`** argument is a `formal()` that will control how the function is called. **Everything** inside of the curly brackets `{ }` is the `body()` of the function. In rtistry, we can create simple or complex functions to assist in the creation of our pieces. 
+
+---
+
+class: dark, animated, middle, fadeIn
+
+# <center>Why Use Functions in Rtistry?</center>
+
+*<center>"No Really. Stop Making Things Hard"</center>*
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+<img src = "images/art set.jpg">
+
+--
+
+- Streamline code
+--
+
+- Reduce any manual work that needs to be done
+--
+
+- Make it easier to create variations in your work
+--
+
+- Build up a tool box of functionalities, especially for things you'd like to do often.
+
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Using Base R</span></h1>
+
+We've already seen a quick example of how we can create functions in R with the `function()` directive. Just like with many processes in R, you can make functions completely using Base R without any extra packages, if you're an R purist.
