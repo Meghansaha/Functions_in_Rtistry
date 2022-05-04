@@ -32,7 +32,6 @@
     font-family: 'Thasadith', sans-serif;
 }
 
-
 /* CSS themeing for Dark Slides */
 /* Background Image and text */
 .dark {
@@ -49,6 +48,18 @@
   width: auto;
   padding: 3px;
   border-style: dotted;
+}
+
+/* Link Formatting */
+
+.dark a:link {
+  color: white;
+  vertical-align: middle;
+}
+
+.dark a:visted {
+  color: white;
+  vertical-align: middle;
 }
 
 /* Slide Numbers */
@@ -79,6 +90,17 @@
   width: auto;
   padding: 3px;
   border-style: dotted;
+}
+
+/* Link Formatting */
+.light a:link {
+  color: black;
+  vertical-align: middle;
+}
+
+.light a:visited {
+  color: black;
+  vertical-align: middle;
 }
 
 /* Slide Number */
@@ -116,20 +138,23 @@ img.bio {
 img.icon{
     vertical-align: middle;
 }
-.light a:link {
-  color: black;
-  vertical-align: middle;
-}
 
-.dark a:link {
-  color: white;
-  vertical-align: middle;
-}
-
-
+/* R Code Snippet Formatting */
 code.r{
   font-size: 14px;
 }
 pre {
   font-size: 14px
 }
+
+/* Special image animations and styling */
+
+img.special{
+ box-shadow:
+    -50px -50px 0 -40px #2e2d2c,
+     50px 50px 0 -40px #000000;
+  position: relative;
+  float:center; 
+}
+  
+

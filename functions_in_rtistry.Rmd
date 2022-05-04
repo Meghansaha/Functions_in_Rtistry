@@ -3,7 +3,7 @@ title: "Making Functions for Rtistry"
 subtitle: ""
 author: "Meghan Harris, MPH"
 institute: "R Ladies Johannesburg"
-date: "Tuesday, May 24th, 2022"
+date: "Tuesday, May 24th, 2022 | (24/05/2022)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -57,10 +57,10 @@ class: light, animated, fadeIn
 - Why Use Functions in Rtistry?
 
 
-- Using Base R
+- Using Base R for Data
 
 
-- Using Purrr
+- Using Purrr for Data
 
 
 - Different Types of Functions for Rtistry
@@ -145,25 +145,197 @@ class: light, animated, fadeIn
 
 <h1><span>Why Use Functions in Rtistry?</span></h1>
 
-<img src = "images/art set.jpg">
-
---
-
-- Streamline code
---
-
-- Reduce any manual work that needs to be done
---
-
-- Make it easier to create variations in your work
---
-
 - Build up a tool box of functionalities, especially for things you'd like to do often.
+
+--
+<br><br>
+<center><img class = "special", src = "images/art set.jpg" width = "300px", height = "300px"></center>
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Streamline code and reduce any manual (copy and paste) work
+
+<br>
+--
+<img class = "special", align = "left", src = "images/streamline_ex1.png" width = "320px", height = "300px">
+<img class = "special", align = "right", src = "images/streamline_ex2.png" width = "320px", height = "300px">
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Streamline code and reduce any manual (copy and paste) work
+
+<img class = "special", align = "center", src = "images/rectangles.png", width = "100%", height = "380px">
 
 
 ---
 class: light, animated, fadeIn
 
-<h1><span>Using Base R</span></h1>
+<h1><span>Why Use Functions in Rtistry?</span></h1>
 
-We've already seen a quick example of how we can create functions in R with the `function()` directive. Just like with many processes in R, you can make functions completely using Base R without any extra packages, if you're an R purist.
+- Streamline code and reduce any manual (copy and paste) work
+
+```{r streamline_ex1, echo=TRUE, eval = FALSE}
+# Load in your libraries====
+library(ggplot2)
+library(dplyr)
+library(purrr)
+
+#Setting seed for reproducibility====
+set.seed(1129)
+
+# Set up some options====
+x_transformer <- c(0,15,30)
+rectange_groups <- c("right","middle","left")
+rectangle_colors <- c("#82954B", "#AC7D88", "#143F6B")
+rectangle_borders <- map_chr(rectangle_colors, ~colorRampPalette(c(.x,"#000000"))(10)[5])
+
+# Create a "base" rectangle====
+rectangle <- tibble(x = c(seq(0,10, length.out = 100),
+                               rep(10,100),
+                               seq(10,0, length.out = 100),
+                               rep(0,100)),
+                         y = c(rep(0,100),
+                               seq(0,20, length.out = 100), 
+                               rep(20,100),
+                               seq(20,0, length.out = 100)))
+
+
+```
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Streamline code and reduce any manual (copy and paste) work
+
+```{r streamline_ex2, echo=TRUE, eval = FALSE}
+# Use Purrr functions to apply options to the base rectangle and create the data needed====
+rectangles_df <- pmap_df(list(x_transformer,
+                             rectange_groups,
+                             rectangle_colors,
+                             rectangle_borders), ~rectangle %>%
+                                                  mutate(x = x + ..1,
+                                                         group = ..2,
+                                                         fill = ..3,
+                                                         color = ..4))
+# Plot the piece====
+rectangles_df  %>%
+  ggplot(aes(x = x, y = y, group = group)) +
+  theme_void()+
+  geom_polygon(fill = rectangles_df$fill , 
+               color = rectangles_df$color, 
+               size = 1.5, 
+               position = position_jitter(width = .05, height = .02)) +
+  theme(plot.background = element_rect(fill = "#F1DDBF"))
+```
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Streamline code and reduce any manual (copy and paste) work
+
+<img class = "special", align = "center", src = "images/rectangles.png", width = "100%", height = "380px">
+
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Make it easier to create variations in your work
+
+```{r variations_ex1, echo=TRUE, eval = FALSE}
+# Load in your libraries====
+library(ggplot2)
+library(dplyr)
+library(purrr)
+
+#Setting seed for reproducibility====
+set.seed(1129)
+
+# Set up some options====
+x_transformer <- c(0,15,30)
+rectange_groups <- c("right","middle","left")
+rectangle_colors <- c("#1C658C", "#83BD75", "#CDBE78")
+back_color <- "#363062"
+
+
+# Just wrap everything in a custom function for better readability and ease====
+rectangle_maker <- function(transformer, groups, colors){...}
+
+# Use the custom function to make the data====
+rectangles_df <- rectangle_maker(x_transformer, rectange_groups, rectangle_colors)
+
+```
+
+???
+Rectangle colors =  blue, green, yellow
+<br>
+background color = purple
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Make it easier to create variations in your work
+
+```{r variations_ex2, echo=TRUE, eval = FALSE}
+# Plot the piece====
+rectangles_df  %>%
+  ggplot(aes(x = x, y = y, group = group)) +
+  theme_void()+
+  geom_polygon(fill = rectangles_df$fill , 
+               color = rectangles_df$color, 
+               size = 1.5, 
+               position = position_jitter(width = .05, height = .02)) +
+  theme(plot.background = element_rect(fill = back_color))
+```
+
+???
+Background color object is put directly into the ggplot's theme function, we could put this in the function if we place the ggplot function in the "rectangle_maker" function as well 
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+- Make it easier to create variations in your work
+
+
+<img class = "special", align = "center", src = "images/varied_rectangles.png", width = "100%", height = "380px">
+
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Using Base R for Data</span></h1>
+
+We've already seen some examples of how we can create functions in R with the `function()` directive. Just like with many processes in R, you can make functions completely using Base R without any extra packages, if you're an R purist.
+
+--
+- There's no limit to what functions you can use in Base R to make your data but here's a few that are in my toolbox:
+<br>
+<br>
+
+--
+    -  <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/function"> `function()`</a>
+--
+    -  <a href="https://www.rdocumentation.org/packages/memisc/versions/0.99.30.7/topics/Sapply"> `sapply()` and `lapply()`</a>
+--
+    -  <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/sample"> `sample()`</a>
+--
+    -  <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/rep"> `rep()`</a>
+--
+    - <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/expand.grid"> `expand.grid()`</a>
+--
+    - <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Control">Control Flows</a>
