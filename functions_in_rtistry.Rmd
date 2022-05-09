@@ -63,10 +63,7 @@ class: light, animated, fadeIn
 - Using Purrr for Data
 
 
-- Different Types of Functions for Rtistry
-
-
-- Creating Custom Functions in R
+- Types of Functions for Rtistry
 
 
 - Live Coding Example
@@ -316,6 +313,15 @@ class: light, animated, fadeIn
 
 
 ---
+
+class: dark, animated, middle, fadeIn
+
+# <center>Using Base R for Data</center>
+
+*<center>"Just like Vanilla Ice Cream 🍦, Base R is underrated"</center>*
+
+
+---
 class: light, animated, fadeIn
 
 <h1><span>Using Base R for Data</span></h1>
@@ -339,3 +345,213 @@ We've already seen some examples of how we can create functions in R with the `f
     - <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/expand.grid"> `expand.grid()`</a>
 --
     - <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Control">Control Flows</a>
+
+
+---
+
+class: dark, animated, middle, fadeIn
+
+# <center>Using Purrr for Data</center>
+
+*<center>"Sometimes I wonder why Purrr has three R's"</center>*
+
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Using Purrr for Data</span></h1>
+
+<a href="https://purrr.tidyverse.org/">Purrr</a> is a Tidyverse package that <i>"enhances R's functional programming toolkit by providing a complete and consistent set of tolls for working with functions and vectors."</i>
+
+--
+- The Purrr package has lot of useful functions that can help with your rtistry. Here's just a few of my most commonly used functions:
+<br>
+<br>
+
+--
+    -  <a href="https://purrr.tidyverse.org/reference/map.html"> The `map()` Family</a>
+--
+    -  <a href="https://www.rdocumentation.org/packages/memisc/versions/0.99.30.7/topics/Sapply"> The `map2()` and `pmap()` Families</a>
+--
+    -  <a href="https://purrr.tidyverse.org/reference/keep.html"> `keep()` and `discard()` Functions</a>
+--
+    -  <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/rep"> `modify()` Functions</a>
+
+ 
+---
+class: dark, animated, middle, fadeIn
+
+# <center>Types of Functions in Rtistry</center>
+
+*<center>"There's no rules in Rtistry. Do what you want..."</center>*
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+The longer you do rtistry you may realize that you may start to develop a certain style. You may find yourself needing to do repeated types of operations. Likewise, you may get to a point where you'll be looking for new solutions to new challenges. Your journey may lead you to creating the following types of basic functions:
+
+--
+-   Repetition
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+```{r repetition_ex, eval = FALSE}
+#Function for repeating vertical bars===
+vertical_bars <- function(n_bars, color_pal, background_color){
+  
+  #Setting iterations for "n" amount of bars===
+  iterations = 1:n_bars
+  
+  #Creating a color gradient based on supplied colors values and desired "n"===
+  bar_colors = colorRampPalette(color_pal)(n_bars)
+  
+  #Creating a "base" bar to copy and repeat over===
+  base_bar = tibble(x = c(0,1,1,0),
+                    y = c(0,0,10,10),
+                    group = 0)
+  
+  #Creating all the data needed to repeat the base bar and apply the generated color palette===
+  bars <- map2_df(iterations,
+                  bar_colors, ~base_bar %>%
+                                 mutate(x = x + 1.5*.x,
+                                        group = group + .x,
+                                        color = .y))
+  #Creating the actual ggplot===
+  bars %>%
+    ggplot(aes(x,y, group = group))+
+    theme_void()+
+    geom_polygon(fill = bars$color, color = "#000000", size = 1)+
+    theme(plot.background = element_rect(fill = background_color))}
+```
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+
+```{r repetition_ex2, eval = FALSE}
+#Options for the Piece===
+color_pal <- c("#363062", "#4D4C7D", "#827397", "#E9D5DA") # A purple-ish color palette
+back_color <- "#383838" # Some type of dark gray
+
+
+# Using the function
+vertical_bars(10, color_pal, back_color)
+
+```
+
+
+<center> <img src = "images/rep_ex.png", height = "300px", width = "100%"> </center>
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+-   Randomization
+
+```{r randomization, eval = FALSE}
+grid_maker <- function(rows,cols){...}
+```
+
+<center> <img src = "images/rando_1.png", height = "160px"> <img src = "images/rando_2.png", height = "160px"> </center>
+<center> <img src = "images/rando_3.png", height = "160px"> <img src = "images/rando_4.png", height = "160px"> </center>
+
+
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+-   Helpers/Plug-ins
+
+```{r helper_ex1, eval = FALSE}
+# Data from another function===
+squiggle_mess <- horiz_lines(0,10,15,10)
+
+# Helper function to plot the data and add variation to size and background color===
+plot_helper <- function(wide_size, small_size, background_color){
+  
+# Printing the piece===
+squiggle_mess  %>%
+  ggplot(aes(x,y, group = group))+
+  theme_void()+
+  geom_path(size = wide_size, color = "#000000", 
+            lineend = "round", alpha = .7)+
+  geom_path(size = small_size, color = "#ffffff", 
+            linetype = 2, position = position_jitter(height = .09))+
+  theme(plot.background = element_rect(fill = background_color))+
+  coord_cartesian(expand = TRUE, xlim = c(0,20))
+}
+
+```
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+-   Helpers/Plug-ins
+```{r helper_ex2, eval = FALSE}
+
+plot_helper(wide_size = 10, small_size = .1, background_color = "purple")
+
+```
+
+<center> <img src = "images/helper_1.png", height = "350px">  </center>
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+-   Helpers/Plug-ins
+```{r helper_ex3, eval = FALSE}
+
+plot_helper(wide_size = 20, small_size = 5, background_color = "green")
+
+```
+
+<center> <img src = "images/helper_2.png", height = "350px">  </center>
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+-   Helpers/Plug-ins
+```{r helper_ex4, eval = FALSE}
+
+plot_helper(wide_size = 2, small_size = 5, background_color = "orange")
+
+```
+
+<center> <img src = "images/helper_3.png", height = "350px">  </center>
+
+---
+class: light, animated, fadeIn
+
+<h1><span>Types of Functions in Rtistry</span></h1>
+
+-   Procedural/Algorithmic
+
+```{r procedural, eval = FALSE}
+# A 200-ish line function that procedurally creates circles in a "packing" fashion===
+
+circle_packer <- function(n,min_x,max_x,min_y,max_y){...}
+
+```
+
+<center> <img src = "images/procedural.png", height = "300px">  </center>
+
+---
+class: dark, animated, middle, fadeIn
+
+# <center>Live Coding Example</center>
+
+*<center>"AKA: The part where Meghan probably forgets everything she knows because, pressure."</center>*
