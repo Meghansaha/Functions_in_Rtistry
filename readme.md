@@ -1,19 +1,24 @@
 Functions in Rtistry
 ================
 
-## About
+# About
 
 This workshop presented by R-Ladies Johannesburg will dive into using
 functions in Rtistry. While no experience is required to learn from the
 presentation, it is assumed that the viewer has some base knowledge in
 basic rtistry concepts and functions in R.
 
-## Presentation
+# Presentation
 
 The slides for this workshop can be viewed
 [here](https://meghansaha.github.io/Functions_in_Rtistry/).
 
-## More Rtistry Resources
+# Live Coding Code
+
+Will be available after the presentation. A link will be created and
+placed here.
+
+# More Rtistry Resources
 
 -   Blog Post: [“Thinking Outside the Grid - A “bare bones” intro to
     Rtistry concepts in R using
