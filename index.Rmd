@@ -163,6 +163,7 @@ class: light, animated, fadeIn
 <img class = "special", align = "left", src = "images/streamline1.png", height = "400px">
 <img class = "special", align = "right", src = "images/streamline2.png", height = "300px">
 
+<p align = "right"> <sub>Thank you <a href="https://twitter.com/StarTrek_Lt"> Zane(@StarTrek_Lt)</a><br>For reminding me <a href= "https://carbon.now.sh/">Carbon</a> exists<br> and for reviewing the slides 😊</sub></p>
 
 ---
 class: light, animated, fadeIn
