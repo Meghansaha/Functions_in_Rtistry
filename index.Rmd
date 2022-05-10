@@ -160,8 +160,8 @@ class: light, animated, fadeIn
 
 <h1><span>Why Use Functions in Rtistry?</span></h1>
 
-<img class = "special", align = "left", src = "images/streamline_ex1.png", height = "400px">
-<img class = "special", align = "right", src = "images/streamline_ex2.png", height = "300px">
+<img class = "special", align = "left", src = "images/streamline_1.png", height = "400px">
+<img class = "special", align = "right", src = "images/streamline_2.png", height = "300px">
 
 
 ---
