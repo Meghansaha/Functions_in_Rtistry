@@ -155,10 +155,14 @@ class: light, animated, fadeIn
 
 - Streamline code and reduce any manual (copy and paste) work
 
-<br>
---
-<img class = "special", align = "left", src = "images/streamline_ex1.png" width = "320px", height = "300px">
-<img class = "special", align = "right", src = "images/streamline_ex2.png" width = "320px", height = "300px">
+---
+class: light, animated, fadeIn
+
+<h1><span>Why Use Functions in Rtistry?</span></h1>
+
+<img class = "special", align = "left", src = "images/streamline_ex1.png", height = "400px">
+<img class = "special", align = "right", src = "images/streamline_ex2.png", height = "300px">
+
 
 ---
 class: light, animated, fadeIn
