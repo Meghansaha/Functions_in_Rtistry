@@ -199,7 +199,7 @@ set.seed(1129)
 
 # Set up some options====
 x_transformer &lt;- c(0,15,30)
-rectange_groups &lt;- c("right","middle","left")
+rectangle_groups &lt;- c("left","middle","right")
 rectangle_colors &lt;- c("#82954B", "#AC7D88", "#143F6B")
 rectangle_borders &lt;- map_chr(rectangle_colors, ~colorRampPalette(c(.x,"#000000"))(10)[5])
 
@@ -225,7 +225,7 @@ class: light, animated, fadeIn
 ```r
 # Use Purrr functions to apply options to the base rectangle and create the data needed====
 rectangles_df &lt;- pmap_df(list(x_transformer,
-                             rectange_groups,
+                             rectangle_groups,
                              rectangle_colors,
                              rectangle_borders), ~rectangle %&gt;%
                                                   mutate(x = x + ..1,
