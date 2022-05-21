@@ -310,6 +310,8 @@ rectangles_df  %&gt;%
 ```
 
 ???
+Using previous rectangle ex - easily change the colors
+&lt;br&gt;
 Background color object is put directly into the ggplot's theme function, we could put this in the function if we place the ggplot function in the "rectangle_maker" function as well 
 
 ---
@@ -357,7 +359,8 @@ We've already seen some examples of how we can create functions in R with the `f
 --
     - &lt;a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Control"&gt;Control Flows&lt;/a&gt;
 
-
+???
+Quick reference to some functions I use frequently, mentioned in First rtistry workshop, slides available in my GitHub repo for this talk
 ---
 
 class: dark, animated, middle, fadeIn
@@ -372,7 +375,7 @@ class: light, animated, fadeIn
 
 &lt;h1&gt;&lt;span&gt;Using Purrr for Data&lt;/span&gt;&lt;/h1&gt;
 
-&lt;a href="https://purrr.tidyverse.org/"&gt;Purrr&lt;/a&gt; is a Tidyverse package that &lt;i&gt;"enhances R's functional programming toolkit by providing a complete and consistent set of tolls for working with functions and vectors."&lt;/i&gt;
+&lt;a href="https://purrr.tidyverse.org/"&gt;Purrr&lt;/a&gt; is a Tidyverse package that &lt;i&gt;"enhances R's functional programming toolkit by providing a complete and consistent set of tools for working with functions and vectors."&lt;/i&gt;
 
 --
 - The Purrr package has lot of useful functions that can help with your rtistry. Here's just a few of my most commonly used functions:
@@ -413,6 +416,7 @@ class: light, animated, fadeIn
 
 ```r
 #Function for repeating vertical bars===
+library(tidyverse)
 vertical_bars &lt;- function(n_bars, color_pal, background_color){
   
   #Setting iterations for "n" amount of bars===
@@ -439,6 +443,10 @@ vertical_bars &lt;- function(n_bars, color_pal, background_color){
     geom_polygon(fill = bars$color, color = "#000000", size = 1)+
     theme(plot.background = element_rect(fill = background_color))}
 ```
+???
+For the sake of time, I won't go into this, code is available on the slides on GitHub
+&lt;br&gt;
+But here for any of you that want to go back and reproduce this image
 ---
 class: light, animated, fadeIn
 
@@ -504,6 +512,8 @@ squiggle_mess  %&gt;%
 }
 ```
 
+???
+helpers/plug-ins can be used to build off of existing functions/pieces to introduce variation easily
 ---
 class: light, animated, fadeIn
 
@@ -559,6 +569,10 @@ circle_packer &lt;- function(n,min_x,max_x,min_y,max_y){...}
 
 &lt;center&gt; &lt;img src = "images/procedural.png", height = "300px"&gt;  &lt;/center&gt;
 
+???
+getting more involved may lead to procedure/algorithmic when you want to start calculating things, implementing complex logic, etc.
+&lt;br&gt;
+still working on this so not publicly available 
 ---
 class: dark, animated, middle, fadeIn
 

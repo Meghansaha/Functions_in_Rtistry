@@ -304,6 +304,8 @@ rectangles_df  %>%
 ```
 
 ???
+Using previous rectangle ex - easily change the colors
+<br>
 Background color object is put directly into the ggplot's theme function, we could put this in the function if we place the ggplot function in the "rectangle_maker" function as well 
 
 ---
@@ -351,7 +353,8 @@ We've already seen some examples of how we can create functions in R with the `f
 --
     - <a href="https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/Control">Control Flows</a>
 
-
+???
+Quick reference to some functions I use frequently, mentioned in First rtistry workshop, slides available in my GitHub repo for this talk
 ---
 
 class: dark, animated, middle, fadeIn
@@ -366,7 +369,7 @@ class: light, animated, fadeIn
 
 <h1><span>Using Purrr for Data</span></h1>
 
-<a href="https://purrr.tidyverse.org/">Purrr</a> is a Tidyverse package that <i>"enhances R's functional programming toolkit by providing a complete and consistent set of tolls for working with functions and vectors."</i>
+<a href="https://purrr.tidyverse.org/">Purrr</a> is a Tidyverse package that <i>"enhances R's functional programming toolkit by providing a complete and consistent set of tools for working with functions and vectors."</i>
 
 --
 - The Purrr package has lot of useful functions that can help with your rtistry. Here's just a few of my most commonly used functions:
@@ -406,6 +409,7 @@ class: light, animated, fadeIn
 <h1><span>Types of Functions in Rtistry</span></h1>
 ```{r repetition_ex, eval = FALSE}
 #Function for repeating vertical bars===
+library(tidyverse)
 vertical_bars <- function(n_bars, color_pal, background_color){
   
   #Setting iterations for "n" amount of bars===
@@ -432,6 +436,10 @@ vertical_bars <- function(n_bars, color_pal, background_color){
     geom_polygon(fill = bars$color, color = "#000000", size = 1)+
     theme(plot.background = element_rect(fill = background_color))}
 ```
+???
+For the sake of time, I won't go into this, code is available on the slides on GitHub
+<br>
+But here for any of you that want to go back and reproduce this image
 ---
 class: light, animated, fadeIn
 
@@ -496,6 +504,8 @@ squiggle_mess  %>%
 
 ```
 
+???
+helpers/plug-ins can be used to build off of existing functions/pieces to introduce variation easily
 ---
 class: light, animated, fadeIn
 
@@ -554,6 +564,10 @@ circle_packer <- function(n,min_x,max_x,min_y,max_y){...}
 
 <center> <img src = "images/procedural.png", height = "300px">  </center>
 
+???
+getting more involved may lead to procedure/algorithmic when you want to start calculating things, implementing complex logic, etc.
+<br>
+still working on this so not publicly available 
 ---
 class: dark, animated, middle, fadeIn
 
