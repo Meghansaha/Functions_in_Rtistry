@@ -28,3 +28,6 @@ Live Code Example [Here](scripts/live_code_example.R)
 
 -   Presentation Slides: [“Intro to Rtistry Using ggplot2 in
     R”](https://lnkd.in/ghGDreS8)
+
+-   Example Code: [“Bars Example”](scripts/bars_example.R) - (An example
+    on using Purrr functions for Rtistry)
