@@ -15,8 +15,8 @@ The slides for this workshop can be viewed
 
 # Live Coding Code
 
-Will be available after the presentation. A link will be created and
-placed here.
+Live Code Example
+[Here](https://meghansaha.github.io/Functions_in_Rtistry/scripts/live_code_example.R)
 
 # More Rtistry Resources
 

@@ -14,7 +14,7 @@ This workshop presented by R-Ladies Johannesburg will dive into using functions 
 The slides for this workshop can be viewed [here](https://meghansaha.github.io/Functions_in_Rtistry/).
 
 # Live Coding Code
-Will be available after the presentation. A link will be created and placed here.
+Live Code Example [Here](https://meghansaha.github.io/Functions_in_Rtistry/scripts/live_code_example.R)
 
 # More Rtistry Resources
   -   Blog Post: ["Thinking Outside the Grid - A “bare bones” intro to Rtistry concepts in R using ggplot."](https://www.thetidytrekker.com/post/thinking-outside-the-grid)
